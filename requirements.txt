@@ -1,0 +1,2 @@
+torch==2.10.0
+onnxruntime-gpu==1.23.2
