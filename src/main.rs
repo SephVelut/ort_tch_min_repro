@@ -1,7 +1,7 @@
 use ort::{ep, session::Session, value::Tensor as OrtTensor};
 use tch::Device;
 
-const ORT_LIB: &str = ".venv/lib/python3.10/site-packages/onnxruntime/capi/libonnxruntime.so.1.23.2";
+const ORT_LIB: &str = "onnxruntime-linux-x64-gpu-1.24.4/lib/libonnxruntime.so.1.24.4";
 const MODEL: &str = "decoder_joint-model.onnx";
 
 fn main() {
