@@ -6,6 +6,10 @@
 #define CHK(x) do { OrtStatus *_s = (x); if (_s) { fprintf(stderr, "%s\n", api->GetErrorMessage(_s)); api->ReleaseStatus(_s); exit(1); } } while(0)
 
 int main(void) {
+	if (!dlopen(".venv/lib/python3.10/site-packages/torch/lib/libtorch.so", RTLD_LAZY | RTLD_GLOBAL)) {
+		fprintf(stderr, "libtorch: %s\n", dlerror());
+		return 1;
+	}
 	void *h = dlopen("onnxruntime-linux-x64-gpu-1.24.4/lib/libonnxruntime.so.1.24.4", RTLD_LAZY | RTLD_GLOBAL);
 	const OrtApi *api = ((const OrtApiBase *(*)(void))dlsym(h, "OrtGetApiBase"))()->GetApi(ORT_API_VERSION);
 
